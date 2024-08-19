@@ -13,7 +13,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { PhoneValidation } from 'src/utils/PhoneValidation';
 
 import fa from 'src/locales/fa';
-import { AUTH_API } from 'src/config-global';
+import { AUTH_API, AUTH_API_KEY } from 'src/config-global';
 
 import { Iconify } from 'src/components/iconify';
 
@@ -63,17 +63,23 @@ export function JwtSignInView() {
       else {
         infosFormData.append('phone_number', infos.phone_number);
         // sending phone_number for checking the user status
-        await axios.post(`${AUTH_API}v1/account/check`, infosFormData).then(({ data }) => {
-          const check = data.data;
-          if (check?.is_created === true) {
-            // receiving the password from the user
-            passRef.current.focus();
-            setStep(1);
-          } else {
-            toast.error('حساب کاربری با این شماره وجود ندارد!');
-            // enqueueSnackbar('حساب کاربری با این شماره وجود ندارد!');
-          }
-        });
+        await axios
+          .post(`${AUTH_API}v1/account/check`, infosFormData, {
+            headers: {
+              'Api-Key': AUTH_API_KEY,
+            },
+          })
+          .then(({ data }) => {
+            const check = data.data;
+            if (check?.is_created === true) {
+              // receiving the password from the user
+              passRef.current.focus();
+              setStep(1);
+            } else {
+              toast.error('حساب کاربری با این شماره وجود ندارد!');
+              // enqueueSnackbar('حساب کاربری با این شماره وجود ندارد!');
+            }
+          });
         // .catch((e) => {
         //   console.error(e);
         //   // enqueueSnackbar(e.response.data.message, {variant: "error"})

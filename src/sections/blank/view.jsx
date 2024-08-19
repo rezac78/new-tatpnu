@@ -44,7 +44,6 @@ import {
 
 // ----------------------------------------------------------------------
 
-
 const TABLE_HEAD = [
   { id: 'name', label: 'Name' },
   { id: 'phoneNumber', label: 'Phone number', width: 180 },
@@ -68,7 +67,7 @@ export function UserListView() {
   const filters = useSetState({ name: '', role: [], status: 'all' });
 
   const dataFiltered = applyFilter({
-    inputData: tableData,
+    inputData: tableData || [],
     comparator: getComparator(table.order, table.orderBy),
     filters: filters.state,
   });
@@ -317,7 +316,7 @@ export function UserListView() {
   );
 }
 
-function applyFilter({ inputData, comparator, filters }) {
+function applyFilter({ inputData = [], comparator, filters }) {
   const { name, status, role } = filters;
 
   const stabilizedThis = inputData.map((el, index) => [el, index]);

@@ -66,42 +66,11 @@ export const navData = [
           },
         ],
       },
-      {
-        title: t.dashboard.pages.products,
-        path: paths.dashboard.products.list,
-        icon: ICONS.product,
-        children: [
-          {
-            title: t.dashboard.pages.categories,
-            path: paths.dashboard.categories.list,
-          },
-          {
-            title: t.dashboard.pages.products,
-            path: paths.dashboard.products.list,
-            // icon: ICONS.user,
-          },
-          {
-            title: t.dashboard.pages.userProducts,
-            path: paths.dashboard.userProducts.list,
-            // icon: ICONS.user,
-          },
-          // {
-          //   title: t.dashboard.pages.productAttribute,
-          //   path: paths.dashboard.productAttribute.list,
-          //   // icon: ICONS.user,
-          // },
-          {
-            title: t.dashboard.pages.userCertificates,
-            path: paths.dashboard.userCertificates.list,
-            // icon: ICONS.user,
-          },
-        ],
-      },
-      {
-        title: t.dashboard.pages.exam,
-        path: paths.dashboard.exam.list,
-        icon: ICONS.exam,
-      },
+      // {
+      //   title: t.dashboard.pages.exam,
+      //   path: paths.dashboard.exam.list,
+      //   icon: ICONS.exam,
+      // },
     ],
   },
   /**

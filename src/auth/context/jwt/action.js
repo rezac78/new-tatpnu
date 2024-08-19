@@ -2,7 +2,7 @@ import { toast } from 'sonner';
 
 import axios from 'src/utils/axios';
 
-import { AUTH_API } from 'src/config-global';
+import { AUTH_API, AUTH_API_KEY } from 'src/config-global';
 
 import { setSession } from './utils';
 // import { STORAGE_KEY } from './constant';
@@ -15,7 +15,11 @@ export const signInWithPassword = async ({ phone_number, password, Loading }) =>
     const params = new FormData();
     params.append('phone_number', phone_number);
     params.append('password', password);
-    const res = await axios.post(`${AUTH_API}v1/account/login`, params);
+    const res = await axios.post(`${AUTH_API}v1/account/login`, params, {
+      headers: {
+        'Api-Key': AUTH_API_KEY,
+      },
+    });
     const { token } = res.data.data;
 
     if (!token) {

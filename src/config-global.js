@@ -7,6 +7,7 @@ export const HOST_API = import.meta.env.VITE_SERVER_HOST_API; // || "https://bac
 export const AUTH_API = import.meta.env.VITE_SERVER_AUTH_API; // || "https://auth.tatpnu.com/api/";
 export const BASE_LMS_API = import.meta.env.VITE_SERVER_BASE_URL_API; // || "https://lms-api.tatpnu.com/api/v1";
 export const BASE_LMS_IMAGE = import.meta.env.VITE_SERVER_BASE_URL_IMAGE; // || "https://lms-api.tatpnu.com/storage/";
+export const AUTH_API_KEY = import.meta.env.VITE_SERVER_AUTH_API_KEY; // || "L9cVjElj83vwu38NwgKJgZRX7eNKAEOn";
 
 export const CONFIG = {
   site: {

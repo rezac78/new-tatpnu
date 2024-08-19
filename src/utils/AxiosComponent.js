@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { AUTH_API_KEY } from 'src/config-global';
+
 // eslint-disable-next-line import/extensions
 import axios from './axios.js';
 
@@ -8,8 +10,11 @@ export const AxiosComponent = async ({ method, url, data = null, callback, showM
     method,
     url,
     data: data || undefined,
+    headers: {
+      'Api-Key': AUTH_API_KEY,
+    },
   };
-  
+
   let res;
   try {
     res = await axios(config);

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-import { AUTH_API } from 'src/config-global';
+import { AUTH_API, AUTH_API_KEY } from 'src/config-global';
 
 export function useMockedUser() {
-  const [users, setUser] = useState("");
+  const [users, setUser] = useState('');
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -12,6 +12,7 @@ export function useMockedUser() {
         const response = await axios.get(`${AUTH_API}v1/users/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
+            'Api-Key': AUTH_API_KEY,
           },
         });
         setUser(response.data.data);
@@ -23,7 +24,7 @@ export function useMockedUser() {
   }, []);
   const user = {
     id: '8864c717-587d-472a-929a-8e5f298024da-0',
-    displayName: `${users?.first_name} ${users?.last_name}`,
+    displayName: `${users?.first_name}`,
     // email: 'demo@minimals.cc',
     // address: '90210 Broadway Blvd',
     // state: 'California',
