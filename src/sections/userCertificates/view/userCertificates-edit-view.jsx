@@ -1,0 +1,30 @@
+import { paths } from 'src/routes/paths';
+
+import fa from 'src/locales/fa';
+import { DashboardContent } from 'src/layouts/dashboard';
+
+import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+
+import { UserCertificatesNewEditForm } from '../userCertificates-new-edit-form';
+
+// ----------------------------------------------------------------------
+
+export function UserCertificatesEditView({ UserCertificates: currentUserCertificates, Loading }) {
+  console.log(currentUserCertificates);
+  const t = fa;
+  return (
+    <DashboardContent>
+      <CustomBreadcrumbs
+        heading={t.dashboard.tableCommon.edit}
+        links={[
+          { name: t.dashboard.title, href: paths.dashboard.root },
+          { name: t.dashboard.pages.userProducts, href: paths.dashboard.userProducts.list },
+          { name: currentUserCertificates?.user_name },
+        ]}
+        sx={{ mb: { xs: 3, md: 5 } }}
+      />
+
+      <UserCertificatesNewEditForm Loading={Loading} currentUserCertificates={currentUserCertificates} />
+    </DashboardContent>
+  );
+}
